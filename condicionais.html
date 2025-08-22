@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos de Condicionais</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        input, select, button {
+            margin: 8px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 80%;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        p {
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exemplos de Condicionais JavaScript</h1>
+
+    <div class="box">
+        <h2>Verificar idade (if / else)</h2>
+
+        <input type="number" id="idade" placeholder="Digite sua idade">
+        <button onclick="verificarIdade()">Verificar</button>
+        <p id="resultadoIdade"></p>
+    </div>
+
+    <div class="box">
+        <h2>Dia da semana (switch)</h2>
+        <select id="diaSemana">
+            <option value="">-- Escolha um dia --</option>
+            <option value="1">1 - Domingo</option>
+            <option value="2">2 - Segunda</option>
+            <option value="3">3 - Terça</option>
+            <option value="4">4 - Quarta</option>
+            <option value="5">5 - Quinta</option>
+            <option value="6">6 - Sexta</option>
+            <option value="7">7 - Sábado</option>
+        </select>
+        <button onclick="mostrarDia()">Mostrar</button>
+        <p id="resultadoDia"></p>
+    </div>
+
+    <div class="box">
+        <h2>Ímpar ou Par (Condicional ternária)</h2>
+        <input type="number" id="numero" placeholder="Digite um número">
+        <button onclick="verificarParImpar()">Verificar</button>
+        <p id="resultadoNumero"></p>
+    </div>
+
+    <script>
+        function verificarIdade() {
+            let idade = document.getElementById("idade").value;
+            let msg = "";
+
+            if (idade === "") {
+                msg = "Por favor, digite uma idade.";
+            } else if (idade < 16) {
+                msg = "Você não pode votar.";
+            } else if (idade < 18) {
+                msg = "Você pode votar, mas não é obrigatório.";
+            } else {
+                msg = "Você deve votar, é obrigatório."
+            }   
+
+            document.getElementById("resultadoIdade").innerText = msg;
+        }
+
+        function mostrarDia() {
+            let dia = document.getElementById("diaSemana").value;
+            let msg = "";
+
+            switch (dia) {
+                case "1":
+                    msg = "Hoje é Domingo, dia de descanso!";
+                    break;
+                case "2":
+                    msg = "Segunda-feira, força na semana!";
+                    break;
+                case "3":
+                    msg = "Terça-feira produtiva!";
+                    break;
+                case "4":
+                    msg = "Quarta-feira, meio da semana!";
+                    break;
+                case "5":
+                    msg = "Quinta-feira quase sexta!";
+                    break;
+                case "6":
+                    msg = "Sexta-feira, finalmente!";
+                    break;
+                case "7":
+                    msg = "Sábado, aproveite!";  
+                    break;
+                default:
+                    msg = "Escolha um dia válido.";         
+            }
+
+            document.getElementById("resultadoDia").innerText = msg;
+        }
+
+        function verificarParImpar() {
+            let numero = document.getElementById("numero").value;
+            let msg = numero === "" ? "Digite um némero." : (numero % 2 === 0 ? `O número ${numero} é Par.` : `O número ${numero} é Ímpar`);
+            document.getElementById("resultadoNumero").innerText = msg;
+        }
+    </script>
+    
+</body>
+</html>
